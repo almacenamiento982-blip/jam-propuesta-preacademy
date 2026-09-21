@@ -324,86 +324,190 @@
     .phase { grid-template-columns: 1fr; gap: 6px; }
     .sum-grid { grid-template-columns: 1fr 1fr; }
   }
+
+  /* ---- Conmutador de idioma ---- */
+  .langbar {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 0 12px;
+    background: linear-gradient(var(--paper) 72%, transparent);
+  }
+  .langtoggle {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    background: var(--card);
+    padding: 2px;
+  }
+  .langtoggle button {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    background: none;
+    border: none;
+    padding: 6px 13px;
+    cursor: pointer;
+    transition: color .15s, background .15s;
+  }
+  .langtoggle button:hover { color: var(--ink); }
+  .langtoggle button[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .langtoggle button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .langtoggle button { transition: none; }
+  }
+
+  /* Visibilidad por idioma */
+  :root[data-lang="en"] [lang="es"] { display: none; }
+  :root:not([data-lang="en"]) [lang="en"] { display: none; }
+  /* Variantes en línea (celdas, etiquetas) */
+  :root[data-lang="en"] span[lang="es"],
+  :root:not([data-lang="en"]) span[lang="en"] { display: none; }
 </style>
 
 </head>
 <body>
 <div class="wrap">
 
+  <div class="langbar">
+    <div class="langtoggle" role="group" aria-label="Idioma / Language">
+      <button type="button" id="btn-es" aria-pressed="true">Español</button>
+      <button type="button" id="btn-en" aria-pressed="false">English</button>
+    </div>
+  </div>
+
   <header class="cover">
-    <p class="kicker">Juventus Academy Miami · Propuesta de inversión publicitaria</p>
-    <h1>Campaña de captación<br>Pre-Academy</h1>
-    <p class="standfirst">Cómo se va a invertir el presupuesto mensual de publicidad, qué se espera obtener y en qué se basa esa expectativa.</p>
-    <p class="meta">Septiembre 2026 · Meta Ads (Facebook + Instagram) · Destino: WhatsApp</p>
+    <p class="kicker" lang="es">Juventus Academy Miami · Propuesta de inversión publicitaria</p>
+    <p class="kicker" lang="en">Juventus Academy Miami · Advertising investment proposal</p>
+    <h1 lang="es">Campaña de captación<br>Pre-Academy</h1>
+    <h1 lang="en">Pre-Academy<br>Enrollment Campaign</h1>
+    <p class="standfirst" lang="es">Cómo se va a invertir el presupuesto mensual de publicidad, qué se espera obtener y en qué se basa esa expectativa.</p>
+    <p class="standfirst" lang="en">How the monthly advertising budget will be invested, what results to expect, and what that expectation is based on.</p>
+    <p class="meta" lang="es">Septiembre 2026 · Meta Ads (Facebook + Instagram) · Destino: WhatsApp</p>
+    <p class="meta" lang="en">September 2026 · Meta Ads (Facebook + Instagram) · Destination: WhatsApp</p>
   </header>
 
   <div class="summary">
-    <h2>En resumen</h2>
+    <h2 lang="es">En resumen</h2>
+    <h2 lang="en">At a glance</h2>
     <dl class="sum-grid">
-      <div><dt>Inversión</dt><dd>$990<small>al mes</small></dd></div>
-      <div><dt>Diario</dt><dd>$33<small>3 × $11</small></dd></div>
-      <div><dt>Esperado</dt><dd>~49<small>conversaciones/mes</small></dd></div>
-      <div><dt>Costo previsto</dt><dd>$20,45<small>por conversación</small></dd></div>
-      <div><dt>Anuncios</dt><dd>6<small>en 3 públicos</small></dd></div>
-      <div><dt>Primera lectura</dt><dd>12<small>días</small></dd></div>
+      <div>
+        <dt lang="es">Inversión</dt><dt lang="en">Investment</dt>
+        <dd>$990<small lang="es">al mes</small><small lang="en">per month</small></dd>
+      </div>
+      <div>
+        <dt lang="es">Diario</dt><dt lang="en">Daily</dt>
+        <dd>$33<small>3 × $11</small></dd>
+      </div>
+      <div>
+        <dt lang="es">Esperado</dt><dt lang="en">Expected</dt>
+        <dd>~110<small lang="es">conversaciones/mes</small><small lang="en">conversations/month</small></dd>
+      </div>
+      <div>
+        <dt lang="es">Costo objetivo</dt><dt lang="en">Target cost</dt>
+        <dd>$9<small lang="es">por conversación</small><small lang="en">per conversation</small></dd>
+      </div>
+      <div>
+        <dt lang="es">Anuncios</dt><dt lang="en">Ads</dt>
+        <dd>6<small lang="es">en 3 públicos</small><small lang="en">across 3 audiences</small></dd>
+      </div>
+      <div>
+        <dt lang="es">Primera lectura</dt><dt lang="en">First read</dt>
+        <dd>7<small lang="es">días</small><small lang="en">days</small></dd>
+      </div>
     </dl>
   </div>
 
   <!-- ===== OBJETIVO ===== -->
   <section>
-    <h2>01 · El objetivo</h2>
+    <h2 lang="es">01 · El objetivo</h2>
+    <h2 lang="en">01 · The objective</h2>
 
-    <h3>Conversaciones de WhatsApp con padres interesados</h3>
+    <h3 lang="es">Conversaciones de WhatsApp con padres interesados</h3>
+    <h3 lang="en">WhatsApp conversations with interested parents</h3>
 
-    <p>La campaña no busca seguidores, ni visitas a la web, ni "me gusta". Busca una sola cosa: que un padre o una madre del sur de Florida abra una conversación de WhatsApp preguntando por el programa Pre-Academy.</p>
+    <p lang="es">La campaña no busca seguidores, ni visitas a la web, ni "me gusta". Busca una sola cosa: que un padre o una madre del sur de Florida abra una conversación de WhatsApp preguntando por el programa Pre-Academy.</p>
+    <p lang="en">This campaign is not after followers, website visits or likes. It is after one thing: a parent in South Florida opening a WhatsApp conversation to ask about the Pre-Academy program.</p>
 
-    <p>Esa elección tiene una razón operativa. La inscripción en una academia deportiva no es una compra por impulso — es una decisión familiar que se conversa. El canal donde esa conversación efectivamente ocurre hoy es WhatsApp, y es donde el equipo puede responder. Optimizar hacia cualquier otro indicador produciría métricas más vistosas pero menos inscripciones.</p>
+    <p lang="es">Esa elección tiene una razón operativa. La inscripción en una academia deportiva no es una compra por impulso — es una decisión familiar que se conversa. El canal donde esa conversación efectivamente ocurre hoy es WhatsApp, y es donde el equipo puede responder. Optimizar hacia cualquier otro indicador produciría métricas más vistosas pero menos inscripciones.</p>
+    <p lang="en">That choice is operational. Enrolling in a sports academy is not an impulse purchase — it is a family decision that gets discussed. WhatsApp is where that discussion actually happens today, and where the team can respond. Optimizing toward any other metric would produce better-looking numbers and fewer enrollments.</p>
 
     <div class="callout">
-      <h4>Por qué no se optimiza a clics</h4>
-      <p>Al revisar los últimos 24 meses de la cuenta apareció un patrón claro: <strong>los anuncios con más clics fueron los que menos conversaciones generaron.</strong> El anuncio que mejor rindió en la historia de la cuenta no era el más llamativo. Por eso toda la campaña está configurada para que Meta optimice hacia conversaciones iniciadas, no hacia tráfico.</p>
+      <h4 lang="es">Por qué no se optimiza a clics</h4>
+      <h4 lang="en">Why we are not optimizing for clicks</h4>
+      <p lang="es">Al revisar los últimos 24 meses de la cuenta apareció un patrón claro: <strong>los anuncios con más clics fueron los que menos conversaciones generaron.</strong> El anuncio que mejor rindió en la historia de la cuenta no era el más llamativo. Por eso toda la campaña está configurada para que Meta optimice hacia conversaciones iniciadas, no hacia tráfico.</p>
+      <p lang="en">Reviewing the last 24 months of the account revealed a clear pattern: <strong>the ads with the most clicks generated the fewest conversations.</strong> The best-performing ad in the account's history was not the flashiest one. That is why the entire campaign is configured for Meta to optimize toward conversations started, not toward traffic.</p>
     </div>
   </section>
 
   <!-- ===== PRESUPUESTO ===== -->
   <section>
-    <h2>02 · Cómo se reparte el dinero</h2>
+    <h2 lang="es">02 · Cómo se reparte el dinero</h2>
+    <h2 lang="en">02 · How the budget is allocated</h2>
 
-    <p>El presupuesto se divide en tres bloques iguales. Cada bloque le habla a un tipo distinto de público, pero muestra <strong>exactamente los mismos seis anuncios</strong>.</p>
+    <p lang="es">El presupuesto se divide en tres bloques iguales. Cada bloque le habla a un tipo distinto de público, pero muestra <strong>exactamente los mismos seis anuncios</strong>.</p>
+    <p lang="en">The budget splits into three equal blocks. Each block speaks to a different type of audience, but runs <strong>exactly the same six ads</strong>.</p>
 
     <div class="scroll">
       <table>
         <thead>
           <tr>
-            <th>Público</th>
-            <th>A quién alcanza</th>
-            <th class="num">Diario</th>
-            <th class="num">Mensual</th>
+            <th><span lang="es">Público</span><span lang="en">Audience</span></th>
+            <th><span lang="es">A quién alcanza</span><span lang="en">Who it reaches</span></th>
+            <th class="num"><span lang="es">Diario</span><span lang="en">Daily</span></th>
+            <th class="num"><span lang="es">Mensual</span><span lang="en">Monthly</span></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Intereses</strong><span class="sub">~145.000 personas</span></td>
-            <td>Padres del sur de Florida con interés declarado en fútbol.</td>
+            <td>
+              <strong><span lang="es">Intereses</span><span lang="en">Interests</span></strong>
+              <span class="sub"><span lang="es">~145.000 personas</span><span lang="en">~145,000 people</span></span>
+            </td>
+            <td>
+              <span lang="es">Padres del sur de Florida con interés declarado en fútbol.</span>
+              <span lang="en">South Florida parents with a stated interest in soccer.</span>
+            </td>
             <td class="num">$11</td>
             <td class="num">$330</td>
           </tr>
           <tr>
-            <td><strong>Audiencia similar</strong><span class="sub">1% más parecido</span></td>
-            <td>Personas que se parecen a quienes ya siguen la cuenta de Instagram de la academia.</td>
+            <td>
+              <strong><span lang="es">Audiencia similar</span><span lang="en">Lookalike audience</span></strong>
+              <span class="sub"><span lang="es">1% más parecido</span><span lang="en">closest 1%</span></span>
+            </td>
+            <td>
+              <span lang="es">Personas que se parecen a quienes ya siguen la cuenta de Instagram de la academia.</span>
+              <span lang="en">People who resemble those already following the academy's Instagram account.</span>
+            </td>
             <td class="num">$11</td>
             <td class="num">$330</td>
           </tr>
           <tr>
-            <td><strong>Abierto</strong><span class="sub">~2.500.000 personas</span></td>
-            <td>Sin filtros de interés. Meta busca libremente dentro de la zona y el rango de edad.</td>
+            <td>
+              <strong><span lang="es">Abierto</span><span lang="en">Broad</span></strong>
+              <span class="sub"><span lang="es">~2.500.000 personas</span><span lang="en">~2,500,000 people</span></span>
+            </td>
+            <td>
+              <span lang="es">Sin filtros de interés. Meta busca libremente dentro de la zona y el rango de edad.</span>
+              <span lang="en">No interest filters. Meta searches freely within the area and age range.</span>
+            </td>
             <td class="num">$11</td>
             <td class="num">$330</td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="2">Total</td>
+            <td colspan="2"><span lang="es">Total</span><span lang="en">Total</span></td>
             <td class="num">$33</td>
             <td class="num">$990</td>
           </tr>
@@ -411,142 +515,218 @@
       </table>
     </div>
 
-    <p>Todos comparten la misma zona geográfica — <strong>condados de Miami-Dade y Broward</strong>, que cubren las cinco sedes — y el mismo rango de edad, 25 a 54 años.</p>
+    <p lang="es">Todos comparten la misma zona geográfica — <strong>condados de Miami-Dade y Broward</strong>, que cubren las cinco sedes — y el mismo rango de edad, 25 a 54 años.</p>
+    <p lang="en">All three share the same geography — <strong>Miami-Dade and Broward counties</strong>, covering all five locations — and the same age range, 25 to 54.</p>
 
     <div class="quiet">
-      <p><strong>Por qué tres bloques y no uno solo.</strong> Al dar a los tres el mismo presupuesto y los mismos anuncios, la única variable que cambia es el público. Si uno rinde mejor, la causa es identificable y el mes siguiente se puede mover dinero hacia él con fundamento. Un solo bloque gastaría lo mismo sin enseñar nada.</p>
-      <p>El bloque <em>Abierto</em> cumple además la función de control: si termina ganando, significa que la segmentación manual estaba estorbando más que ayudando — un hallazgo valioso que solo se obtiene si se prueba.</p>
+      <p lang="es"><strong>Por qué tres bloques y no uno solo.</strong> Al dar a los tres el mismo presupuesto y los mismos anuncios, la única variable que cambia es el público. Si uno rinde mejor, la causa es identificable y el mes siguiente se puede mover dinero hacia él con fundamento. Un solo bloque gastaría lo mismo sin enseñar nada.</p>
+      <p lang="en"><strong>Why three blocks instead of one.</strong> Giving all three the same budget and the same ads means the only variable that changes is the audience. If one performs better, the cause is identifiable and next month's budget can shift toward it on solid ground. A single block would spend the same money and teach us nothing.</p>
+      <p lang="es">El bloque <em>Abierto</em> cumple además la función de control: si termina ganando, significa que la segmentación manual estaba estorbando más que ayudando — un hallazgo valioso que solo se obtiene si se prueba.</p>
+      <p lang="en">The <em>Broad</em> block also serves as the control: if it ends up winning, it means manual targeting was getting in the way rather than helping — a valuable finding that only emerges if you test for it.</p>
     </div>
   </section>
 
   <!-- ===== GEOGRAFÍA ===== -->
   <section>
-    <h2>03 · Dónde se muestra</h2>
+    <h2 lang="es">03 · Dónde se muestra</h2>
+    <h2 lang="en">03 · Where the ads run</h2>
 
-    <p>Los anuncios se muestran únicamente a <strong>residentes</strong> de Miami-Dade y Broward. Se descartó deliberadamente la opción que Meta ofrece por defecto de incluir también a "personas interesadas en la ubicación", porque incorpora turistas y visitantes temporales. Para un programa con entrenamientos semanales presenciales, ese alcance adicional es gasto perdido.</p>
+    <p lang="es">Los anuncios se muestran únicamente a <strong>residentes</strong> de Miami-Dade y Broward. Se descartó deliberadamente la opción que Meta ofrece por defecto de incluir también a "personas interesadas en la ubicación", porque incorpora turistas y visitantes temporales. Para un programa con entrenamientos semanales presenciales, ese alcance adicional es gasto perdido.</p>
+    <p lang="en">Ads are shown only to <strong>residents</strong> of Miami-Dade and Broward. Meta's default option to also include "people interested in this location" was deliberately turned off, because it pulls in tourists and temporary visitors. For a program built on weekly in-person training, that extra reach is wasted spend.</p>
 
-    <p>Las cinco sedes quedan cubiertas: Downtown Miami, Doral y Mater Bay en Miami-Dade; Davie y Miramar en Broward.</p>
+    <p lang="es">Las cinco sedes quedan cubiertas: Downtown Miami, Doral y Mater Bay en Miami-Dade; Davie y Miramar en Broward.</p>
+    <p lang="en">All five locations are covered: Downtown Miami, Doral and Mater Bay in Miami-Dade; Davie and Miramar in Broward.</p>
   </section>
 
   <!-- ===== CREATIVOS ===== -->
   <section>
-    <h2>04 · Los seis anuncios</h2>
+    <h2 lang="es">04 · Los seis anuncios</h2>
+    <h2 lang="en">04 · The six ads</h2>
 
-    <p>Cada uno entra por un ángulo distinto, porque no todos los padres responden al mismo argumento. Los seis se muestran en los tres públicos.</p>
+    <p lang="es">Cada uno entra por un ángulo distinto, porque no todos los padres responden al mismo argumento. Los seis se muestran en los tres públicos.</p>
+    <p lang="en">Each one takes a different angle, because not every parent responds to the same argument. All six run across all three audiences.</p>
 
     <div class="ads">
       <div class="ad">
-        <div class="ad-top"><span class="ad-kind">Video</span><span class="ad-name">El coach</span></div>
-        <p>Un entrenador explicando cómo se trabaja con niños pequeños. <strong>Es el anuncio con mejor rendimiento en la historia de la cuenta</strong> — $13,56 por conversación.</p>
+        <div class="ad-top">
+          <span class="ad-kind"><span lang="es">Video</span><span lang="en">Video</span></span>
+          <span class="ad-name"><span lang="es">El coach</span><span lang="en">The coach</span></span>
+        </div>
+        <p lang="es">Un entrenador explicando cómo se trabaja con niños pequeños. <strong>Es el anuncio con mejor rendimiento en la historia de la cuenta</strong> — $13,56 por conversación.</p>
+        <p lang="en">A coach explaining how young players are trained. <strong>This is the best-performing ad in the account's history</strong> — $13.56 per conversation.</p>
       </div>
       <div class="ad">
-        <div class="ad-top"><span class="ad-kind">Video</span><span class="ad-name">Dolor y solución</span></div>
-        <p>Por qué muchos niños abandonan el fútbol, y qué se hace distinto. Voz en off en tono cercano.</p>
+        <div class="ad-top">
+          <span class="ad-kind"><span lang="es">Video</span><span lang="en">Video</span></span>
+          <span class="ad-name"><span lang="es">Dolor y solución</span><span lang="en">Problem and solution</span></span>
+        </div>
+        <p lang="es">Por qué muchos niños abandonan el fútbol, y qué se hace distinto. Voz en off en tono cercano.</p>
+        <p lang="en">Why many kids quit soccer, and what is done differently here. Warm voiceover.</p>
       </div>
       <div class="ad">
-        <div class="ad-top"><span class="ad-kind">Imagen</span><span class="ad-name">More soccer, more smiles</span></div>
-        <p>Oferta cálida con las cinco sedes. Niños con medallas — el ángulo del disfrute, no del rendimiento.</p>
+        <div class="ad-top">
+          <span class="ad-kind"><span lang="es">Imagen</span><span lang="en">Image</span></span>
+          <span class="ad-name">More soccer, more smiles</span>
+        </div>
+        <p lang="es">Oferta cálida con las cinco sedes. Niños con medallas — el ángulo del disfrute, no del rendimiento.</p>
+        <p lang="en">A warm offer featuring all five locations. Kids with medals — the enjoyment angle, not the performance angle.</p>
       </div>
       <div class="ad">
-        <div class="ad-top"><span class="ad-kind">Imagen</span><span class="ad-name">Gracias, mamá</span></div>
-        <p>Una frase real de los jugadores el Día de la Madre. Prueba social auténtica, no un testimonio guionado.</p>
+        <div class="ad-top">
+          <span class="ad-kind"><span lang="es">Imagen</span><span lang="en">Image</span></span>
+          <span class="ad-name"><span lang="es">Gracias, mamá</span><span lang="en">Thank you, mom</span></span>
+        </div>
+        <p lang="es">Una frase real de los jugadores el Día de la Madre. Prueba social auténtica, no un testimonio guionado.</p>
+        <p lang="en">A real quote from the players on Mother's Day. Genuine social proof, not a scripted testimonial.</p>
       </div>
       <div class="ad">
-        <div class="ad-top"><span class="ad-kind">Imagen</span><span class="ad-name">¿Todavía no sabes si le gusta?</span></div>
-        <p>Dirigido al padre que aún no se decide. Sin pruebas de selección, sin presión — el argumento más alineado con lo que preocupa a estas familias.</p>
+        <div class="ad-top">
+          <span class="ad-kind"><span lang="es">Imagen</span><span lang="en">Image</span></span>
+          <span class="ad-name"><span lang="es">¿Todavía no sabes si le gusta?</span><span lang="en">Still figuring it out?</span></span>
+        </div>
+        <p lang="es">Dirigido al padre que aún no se decide. Sin pruebas de selección, sin presión — el argumento más alineado con lo que preocupa a estas familias.</p>
+        <p lang="en">Aimed at the parent who has not decided yet. No tryouts, no pressure — the argument that best matches what actually worries these families.</p>
       </div>
       <div class="ad">
-        <div class="ad-top"><span class="ad-kind">Imagen</span><span class="ad-name">Primer mes gratis</span></div>
-        <p>La oferta directa, válida en Miramar, Mater Bay y Downtown Miami.</p>
+        <div class="ad-top">
+          <span class="ad-kind"><span lang="es">Imagen</span><span lang="en">Image</span></span>
+          <span class="ad-name"><span lang="es">Primer mes gratis</span><span lang="en">First month free</span></span>
+        </div>
+        <p lang="es">La oferta directa, válida en Miramar, Mater Bay y Downtown Miami.</p>
+        <p lang="en">The direct offer, valid at Miramar, Mater Bay and Downtown Miami.</p>
       </div>
     </div>
 
     <div class="quiet">
-      <p><strong>Sobre el tono.</strong> La investigación previa sobre padres de fútbol juvenil en Estados Unidos mostró que su preocupación real no es que el hijo no tenga talento suficiente, sino encontrar un lugar donde lo entrenen de forma apropiada para su edad. Los seis anuncios están escritos desde ahí: ninguno promete formar estrellas ni usa urgencia artificial.</p>
+      <p lang="es"><strong>Sobre el tono.</strong> La investigación previa sobre padres de fútbol juvenil en Estados Unidos mostró que su preocupación real no es que el hijo no tenga talento suficiente, sino encontrar un lugar donde lo entrenen de forma apropiada para su edad. Los seis anuncios están escritos desde ahí: ninguno promete formar estrellas ni usa urgencia artificial.</p>
+      <p lang="en"><strong>On tone.</strong> Prior research into youth soccer parents in the United States showed their real concern is not whether their child has enough talent — it is finding a place that coaches appropriately for their child's age. All six ads are written from that insight: none promises to produce stars, none manufactures urgency.</p>
     </div>
   </section>
 
   <!-- ===== EXPECTATIVA ===== -->
   <section>
-    <h2>05 · Qué se espera obtener</h2>
+    <h2 lang="es">05 · Qué se espera obtener</h2>
+    <h2 lang="en">05 · What to expect</h2>
 
-    <p>La proyección no es una estimación optimista: sale del rendimiento real de la cuenta en los últimos 24 meses.</p>
+    <p lang="es">El historial de la cuenta marca el punto de partida, no el techo. Las campañas anteriores se ejecutaron sin la estructura que esta incorpora, y sus cifras reflejan esas limitaciones más que el potencial real del presupuesto.</p>
+    <p lang="en">The account's history marks the starting point, not the ceiling. Previous campaigns ran without the structure this one incorporates, and their figures reflect those limitations rather than the budget's real potential.</p>
 
     <div class="scroll">
       <table>
         <thead>
           <tr>
-            <th>Escenario</th>
-            <th class="num">Costo por conversación</th>
-            <th class="num">Conversaciones/mes</th>
-            <th>Base</th>
+            <th><span lang="es">Escenario</span><span lang="en">Scenario</span></th>
+            <th class="num"><span lang="es">Costo por conversación</span><span lang="en">Cost per conversation</span></th>
+            <th class="num"><span lang="es">Conversaciones/mes</span><span lang="en">Conversations/month</span></th>
+            <th><span lang="es">Base</span><span lang="en">Basis</span></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Optimista</strong></td>
-            <td class="num">$13,56</td>
-            <td class="num">~74</td>
-            <td>Si se replica el mejor registro histórico de la cuenta.</td>
+            <td><strong><span lang="es">Objetivo</span><span lang="en">Target</span></strong></td>
+            <td class="num">$9</td>
+            <td class="num">~110</td>
+            <td>
+              <span lang="es">Meta de esta campaña. Requiere que la nueva estructura supere de forma sostenida el mejor registro anterior.</span>
+              <span lang="en">This campaign's goal. Requires the new structure to sustainably beat the previous best result.</span>
+            </td>
           </tr>
           <tr>
-            <td><strong>Esperado</strong></td>
-            <td class="num">$20,45</td>
+            <td><strong><span lang="es">Mejor registro previo</span><span lang="en">Previous best</span></strong></td>
+            <td class="num"><span lang="es">$13,56</span><span lang="en">$13.56</span></td>
+            <td class="num">~74</td>
+            <td>
+              <span lang="es">Un solo anuncio lo alcanzó, sin el resto de la estructura actual.</span>
+              <span lang="en">A single ad reached this, without the rest of the current structure.</span>
+            </td>
+          </tr>
+          <tr>
+            <td><strong><span lang="es">Promedio previo</span><span lang="en">Previous average</span></strong></td>
+            <td class="num"><span lang="es">$20,45</span><span lang="en">$20.45</span></td>
             <td class="num">~49</td>
-            <td>Promedio histórico. Es la cifra sobre la que conviene planificar.</td>
+            <td>
+              <span lang="es">Media de 24 meses, incluyendo campañas sin optimizar.</span>
+              <span lang="en">24-month average, including unoptimized campaigns.</span>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <p>La diferencia entre ambos escenarios — 25 conversaciones al mes — depende de cuál de los seis anuncios y cuál de los tres públicos termine dominando la entrega. Eso es precisamente lo que la estructura de la campaña está diseñada para averiguar.</p>
+    <p lang="es">Cuatro cambios concretos sostienen ese objetivo. <strong>Uno:</strong> seis creativos distintos compitiendo entre sí, frente a la repetición de una sola pieza. <strong>Dos:</strong> tres públicos separados que permiten identificar cuál convierte mejor y concentrar el dinero ahí. <strong>Tres:</strong> geografía limitada a residentes de los dos condados, eliminando el gasto en turistas y visitantes. <strong>Cuatro:</strong> optimización hacia conversaciones iniciadas y no hacia tráfico, corrigiendo el patrón que hacía que los anuncios con más clics fueran los que menos inscripciones generaban.</p>
+    <p lang="en">Four concrete changes support that target. <strong>One:</strong> six distinct creatives competing against each other, rather than a single piece repeated. <strong>Two:</strong> three separate audiences, making it possible to identify which converts best and concentrate spend there. <strong>Three:</strong> geography restricted to residents of the two counties, eliminating spend on tourists and visitors. <strong>Four:</strong> optimization toward conversations started rather than traffic, correcting the pattern where the ads with the most clicks produced the fewest enrollments.</p>
 
     <div class="callout">
-      <h4>Una advertencia honesta sobre el primer mes</h4>
-      <p>Con seis anuncios repartidos en tres públicos, cada anuncio recibirá cerca de tres conversaciones al mes. <strong>Eso no alcanza para concluir cuál creativo funciona mejor.</strong> El primer mes sirve para establecer el costo real por conversación y detectar diferencias entre públicos, no para elegir ganadores entre anuncios. Cualquier conclusión antes de tiempo llevaría a apagar un anuncio bueno por mala suerte estadística.</p>
+      <h4 lang="es">Cómo se alcanza ese objetivo</h4>
+      <h4 lang="en">How that target gets reached</h4>
+      <p lang="es">No de forma inmediata. Los primeros días el algoritmo reparte el presupuesto entre los seis anuncios y los tres públicos para aprender cuál funciona; el costo por conversación arranca alto y baja a medida que concentra la entrega en lo que rinde. <strong>El objetivo de $9 se alcanza optimizando, no el primer día.</strong></p>
+      <p lang="en">Not immediately. In the first days the algorithm spreads budget across all six ads and all three audiences to learn what works; cost per conversation starts high and drops as delivery concentrates on what performs. <strong>The $9 target is reached through optimization, not on day one.</strong></p>
+      <p lang="es">Por eso las revisiones del día 7 y el día 12 son las que importan: ahí se redistribuye el presupuesto hacia los públicos y creativos que estén rindiendo mejor. Cada ronda de ajuste acerca el costo real al objetivo.</p>
+      <p lang="en">That is why the day 7 and day 12 reviews are the ones that matter: that is when budget gets reallocated toward the audiences and creatives performing best. Each round of adjustment brings actual cost closer to the target.</p>
     </div>
   </section>
 
   <!-- ===== CALENDARIO ===== -->
   <section>
-    <h2>06 · Calendario de revisión</h2>
+    <h2 lang="es">06 · Calendario de revisión</h2>
+    <h2 lang="en">06 · Review schedule</h2>
 
-    <p>La campaña no se toca por impulso. Cada revisión tiene un momento y un criterio definido de antemano.</p>
+    <p lang="es">La campaña no se toca por impulso. Cada revisión tiene un momento y un criterio definido de antemano.</p>
+    <p lang="en">The campaign is not adjusted on impulse. Every review has a predefined moment and a predefined criterion.</p>
 
     <div class="phases">
       <div class="phase">
-        <div class="phase-when">Día 1</div>
+        <div class="phase-when"><span lang="es">Día 1</span><span lang="en">Day 1</span></div>
         <div>
-          <h4>Verificación de aprobación</h4>
-          <p>Que los anuncios estén activos y sin rechazos. No se evalúa rendimiento.</p>
+          <h4 lang="es">Verificación de aprobación</h4>
+          <h4 lang="en">Approval check</h4>
+          <p lang="es">Que los anuncios estén activos y sin rechazos. No se evalúa rendimiento.</p>
+          <p lang="en">Confirm the ads are live and none were rejected. No performance evaluation.</p>
         </div>
       </div>
       <div class="phase">
-        <div class="phase-when">Día 3</div>
+        <div class="phase-when"><span lang="es">Día 3</span><span lang="en">Day 3</span></div>
         <div>
-          <h4>Ajuste técnico de audiencia</h4>
-          <p>La audiencia similar tarda hasta 72 horas en construirse. Si queda demasiado pequeña para gastar su presupuesto, se amplía.</p>
+          <h4 lang="es">Ajuste técnico de audiencia</h4>
+          <h4 lang="en">Technical audience adjustment</h4>
+          <p lang="es">La audiencia similar tarda hasta 72 horas en construirse. Si queda demasiado pequeña para gastar su presupuesto, se amplía.</p>
+          <p lang="en">The lookalike audience takes up to 72 hours to build. If it ends up too small to spend its budget, it gets widened.</p>
         </div>
       </div>
       <div class="phase">
-        <div class="phase-when">Días 4–11</div>
+        <div class="phase-when"><span lang="es">Días 4–6</span><span lang="en">Days 4–6</span></div>
         <div>
-          <h4>Acumulación</h4>
-          <p>Se registran métricas a diario sin intervenir. Modificar una campaña durante este período reinicia el aprendizaje del algoritmo y encarece los resultados.</p>
+          <h4 lang="es">Acumulación</h4>
+          <h4 lang="en">Accumulation</h4>
+          <p lang="es">Se registran métricas a diario sin intervenir. Modificar una campaña durante este período reinicia el aprendizaje del algoritmo y encarece los resultados.</p>
+          <p lang="en">Metrics are logged daily without intervening. Changing a campaign during this window resets the algorithm's learning phase and drives costs up.</p>
         </div>
       </div>
       <div class="phase">
-        <div class="phase-when">Día 12</div>
+        <div class="phase-when"><span lang="es">Día 7</span><span lang="en">Day 7</span></div>
         <div>
-          <h4>Primera decisión</h4>
-          <p>Con unas 20 conversaciones acumuladas ya hay base para comparar los tres públicos y redistribuir presupuesto entre ellos.</p>
+          <h4 lang="es">Primera lectura</h4>
+          <h4 lang="en">First read</h4>
+          <p lang="es">Primera comparación entre los tres públicos: cuál está consiguiendo conversaciones más baratas. Se redistribuye presupuesto hacia el que mejor rinde.</p>
+          <p lang="en">First comparison across the three audiences: which is producing the cheapest conversations. Budget is reallocated toward the best performer.</p>
         </div>
       </div>
       <div class="phase">
-        <div class="phase-when">Día 30</div>
+        <div class="phase-when"><span lang="es">Día 12</span><span lang="en">Day 12</span></div>
         <div>
-          <h4>Evaluación de mes</h4>
-          <p>Costo real por conversación frente a la proyección, y decisión sobre la inversión del mes siguiente.</p>
+          <h4 lang="es">Segundo ajuste</h4>
+          <h4 lang="en">Second adjustment</h4>
+          <p lang="es">Con el volumen acumulado, la comparación entre públicos ya es sólida y el reparto de presupuesto se afina de nuevo.</p>
+          <p lang="en">With accumulated volume, the comparison between audiences is now solid and the budget split is refined again.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-when"><span lang="es">Día 30</span><span lang="en">Day 30</span></div>
+        <div>
+          <h4 lang="es">Evaluación de mes</h4>
+          <h4 lang="en">Monthly evaluation</h4>
+          <p lang="es">Costo real por conversación frente a la proyección, y decisión sobre la inversión del mes siguiente.</p>
+          <p lang="en">Actual cost per conversation against the projection, and the decision on next month's investment.</p>
         </div>
       </div>
     </div>
@@ -554,21 +734,26 @@
 
   <!-- ===== DECISIONES ===== -->
   <section>
-    <h2>07 · Dos decisiones que conviene explicar</h2>
+    <h2 lang="es">07 · Dos decisiones que conviene explicar</h2>
+    <h2 lang="en">07 · Two decisions worth explaining</h2>
 
     <ul class="reasons">
       <li>
         <span class="mark">1</span>
         <div>
-          <p><strong>Todo el presupuesto va a captación de público nuevo.</strong></p>
-          <p class="why">La práctica habitual es reservar un 20-30% para volver a impactar a quienes ya mostraron interés. Con $990 mensuales, ese porcentaje equivaldría a unos $300 — menos de media conversación al día, volumen insuficiente para que el algoritmo aprenda. Se activará cuando el presupuesto permita asignarle entre $400 y $500 sin debilitar la captación.</p>
+          <p lang="es"><strong>Todo el presupuesto va a captación de público nuevo.</strong></p>
+          <p lang="en"><strong>The entire budget goes to reaching new audiences.</strong></p>
+          <p class="why" lang="es">La práctica habitual es reservar un 20-30% para volver a impactar a quienes ya mostraron interés. Con $990 mensuales, ese porcentaje equivaldría a unos $300 — menos de media conversación al día, volumen insuficiente para que el algoritmo aprenda. Se activará cuando el presupuesto permita asignarle entre $400 y $500 sin debilitar la captación.</p>
+          <p class="why" lang="en">Standard practice reserves 20-30% to re-reach people who already showed interest. At $990 a month, that share would be around $300 — under half a conversation per day, too little volume for the algorithm to learn from. It will be activated once the budget allows $400-500 without weakening new-audience acquisition.</p>
         </div>
       </li>
       <li>
         <span class="mark">2</span>
         <div>
-          <p><strong>Se rechazaron varias "mejoras automáticas" que ofrece Meta.</strong></p>
-          <p class="why">La plataforma propone recortar las imágenes, añadirles música, generar texto alternativo y traducir los anuncios automáticamente. Todas se desactivaron: las piezas están producidas con la identidad gráfica oficial de Juventus Academy, y permitir que se alteren destruiría ese trabajo además de impedir comparar los creativos entre sí.</p>
+          <p lang="es"><strong>Se rechazaron varias "mejoras automáticas" que ofrece Meta.</strong></p>
+          <p lang="en"><strong>Several of Meta's "automatic enhancements" were declined.</strong></p>
+          <p class="why" lang="es">La plataforma propone recortar las imágenes, añadirles música, generar texto alternativo y traducir los anuncios automáticamente. Todas se desactivaron: las piezas están producidas con la identidad gráfica oficial de Juventus Academy, y permitir que se alteren destruiría ese trabajo además de impedir comparar los creativos entre sí.</p>
+          <p class="why" lang="en">The platform offers to crop images, add music, generate alternative copy and auto-translate the ads. All were switched off: the creatives are produced with Juventus Academy's official visual identity, and letting them be altered would destroy that work while also making it impossible to compare creatives against each other.</p>
         </div>
       </li>
     </ul>
@@ -576,40 +761,81 @@
 
   <!-- ===== SIGUIENTE NIVEL ===== -->
   <section>
-    <h2>08 · Cómo mejorar el rendimiento</h2>
+    <h2 lang="es">08 · Cómo mejorar el rendimiento</h2>
+    <h2 lang="en">08 · How to improve performance</h2>
 
-    <p>La campaña arranca con lo que hoy está disponible. Hay tres desarrollos que elevarían de forma significativa lo que este mismo presupuesto puede lograr.</p>
+    <p lang="es">La campaña arranca con lo que hoy está disponible. Hay tres desarrollos que elevarían de forma significativa lo que este mismo presupuesto puede lograr.</p>
+    <p lang="en">The campaign launches with what is available today. Three developments would significantly raise what this same budget can achieve.</p>
 
     <div class="phases">
       <div class="phase">
-        <div class="phase-when">Medición</div>
+        <div class="phase-when"><span lang="es">Medición</span><span lang="en">Measurement</span></div>
         <div>
-          <h4>Registrar qué conversaciones terminan en inscripción</h4>
-          <p>Hoy la campaña puede reportar el costo por conversación, pero no cuántas de esas conversaciones se convierten en un alumno inscrito. Con ese dato, la optimización deja de perseguir conversaciones baratas y pasa a perseguir clientes reales — que no siempre son las mismas personas.</p>
+          <h4 lang="es">Registrar qué conversaciones terminan en inscripción</h4>
+          <h4 lang="en">Track which conversations end in enrollment</h4>
+          <p lang="es">Hoy la campaña puede reportar el costo por conversación, pero no cuántas de esas conversaciones se convierten en un alumno inscrito. Con ese dato, la optimización deja de perseguir conversaciones baratas y pasa a perseguir clientes reales — que no siempre son las mismas personas.</p>
+          <p lang="en">Today the campaign can report cost per conversation, but not how many of those conversations become an enrolled player. With that data, optimization stops chasing cheap conversations and starts chasing actual customers — which are not always the same people.</p>
         </div>
       </div>
       <div class="phase">
-        <div class="phase-when">Técnico</div>
+        <div class="phase-when"><span lang="es">Técnico</span><span lang="en">Technical</span></div>
         <div>
-          <h4>Instalar píxel y página de destino</h4>
-          <p>Permitiría construir audiencias a partir de quienes efectivamente se inscribieron, en lugar de quienes simplemente siguen la cuenta. Es la mejora de mayor impacto sobre la calidad del público.</p>
+          <h4 lang="es">Instalar píxel y página de destino</h4>
+          <h4 lang="en">Install a pixel and a landing page</h4>
+          <p lang="es">Permitiría construir audiencias a partir de quienes efectivamente se inscribieron, en lugar de quienes simplemente siguen la cuenta. Es la mejora de mayor impacto sobre la calidad del público.</p>
+          <p lang="en">This would allow building audiences from people who actually enrolled, rather than people who merely follow the account. It is the single highest-impact improvement to audience quality.</p>
         </div>
       </div>
       <div class="phase">
-        <div class="phase-when">Eficiencia</div>
+        <div class="phase-when"><span lang="es">Eficiencia</span><span lang="en">Efficiency</span></div>
         <div>
-          <h4>Cargar la lista de familias ya inscritas</h4>
-          <p>Permitiría excluirlas de la campaña. Hoy una parte del presupuesto se invierte en mostrar anuncios de inscripción a familias que ya forman parte de la academia.</p>
+          <h4 lang="es">Cargar la lista de familias ya inscritas</h4>
+          <h4 lang="en">Upload the list of enrolled families</h4>
+          <p lang="es">Permitiría excluirlas de la campaña. Hoy una parte del presupuesto se invierte en mostrar anuncios de inscripción a familias que ya forman parte de la academia.</p>
+          <p lang="en">This would allow excluding them from the campaign. Today a portion of the budget goes toward showing enrollment ads to families who are already part of the academy.</p>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    Campaña montada el 21 de septiembre de 2026 · Juventus Academy Miami<br>
-    Cifras de referencia obtenidas del historial de la cuenta publicitaria de los últimos 24 meses.
+    <span lang="es">Campaña montada el 21 de septiembre de 2026 · Juventus Academy Miami<br>
+    Cifras de referencia obtenidas del historial de la cuenta publicitaria de los últimos 24 meses.</span>
+    <span lang="en">Campaign built on September 21, 2026 · Juventus Academy Miami<br>
+    Reference figures drawn from the advertising account's history over the last 24 months.</span>
   </footer>
 
 </div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btnEs = document.getElementById('btn-es');
+    var btnEn = document.getElementById('btn-en');
+
+    function setLang(lang) {
+      if (lang === 'en') {
+        root.setAttribute('data-lang', 'en');
+      } else {
+        root.removeAttribute('data-lang');
+      }
+      btnEs.setAttribute('aria-pressed', lang === 'en' ? 'false' : 'true');
+      btnEn.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+      try { localStorage.setItem('jam-lang', lang); } catch (e) {}
+    }
+
+    btnEs.addEventListener('click', function () { setLang('es'); });
+    btnEn.addEventListener('click', function () { setLang('en'); });
+
+    var saved = null;
+    try { saved = localStorage.getItem('jam-lang'); } catch (e) {}
+    if (saved === 'en') {
+      setLang('en');
+    } else if (!saved && typeof navigator !== 'undefined' &&
+               navigator.language && navigator.language.slice(0, 2) === 'en') {
+      setLang('en');
+    }
+  })();
+</script>
 </body>
 </html>
