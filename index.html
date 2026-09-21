@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root { color-scheme: light dark; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font-family: system-ui, sans-serif; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>Inversión Pre-Academy</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --paper: #FAF9F7;
+    --card: #FFFFFF;
+    --card-2: #F2F0EC;
+    --line: #DEDAD3;
+    --line-soft: #EAE7E1;
+    --ink: #1A1C1E;
+    --ink-2: #4E4B46;
+    --ink-3: #7C7871;
+    --gold: #8A6D16;
+    --gold-bg: #F6F1DF;
+    --ok: #2E6B41;
+    --ok-bg: #E6F0E9;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --display: "Oswald", "Arial Narrow", sans-serif;
+    --body: "Inter", system-ui, -apple-system, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #121416;
+      --card: #1B1E22;
+      --card-2: #23272B;
+      --line: #31363B;
+      --line-soft: #262A2E;
+      --ink: #EAE8E4;
+      --ink-2: #B5B1AB;
+      --ink-3: #8B8781;
+      --gold: #CBAB4E;
+      --gold-bg: #2A2517;
+      --ok: #72C189;
+      --ok-bg: #17291D;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #121416;
+    --card: #1B1E22;
+    --card-2: #23272B;
+    --line: #31363B;
+    --line-soft: #262A2E;
+    --ink: #EAE8E4;
+    --ink-2: #B5B1AB;
+    --ink-3: #8B8781;
+    --gold: #CBAB4E;
+    --gold-bg: #2A2517;
+    --ok: #72C189;
+    --ok-bg: #17291D;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 22px;
+    padding-block: 48px 80px;
+  }
+
+  /* ---- Portada ---- */
+  .cover {
+    border-bottom: 3px solid var(--ink);
+    padding-bottom: 26px;
+  }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(32px, 7vw, 52px);
+    line-height: 1.02;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .standfirst {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin: 18px 0 0;
+    max-width: 58ch;
+  }
+  .meta {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-3);
+    margin: 22px 0 0;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- Resumen ejecutivo ---- */
+  .summary {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 26px 28px;
+    margin-top: 34px;
+  }
+  .summary h2 {
+    border: none;
+    padding: 0;
+    margin: 0 0 16px;
+  }
+  .sum-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+    gap: 20px 24px;
+    margin: 0;
+  }
+  .sum-grid dt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 3px;
+  }
+  .sum-grid dd {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    margin: 0;
+    line-height: 1.2;
+  }
+  .sum-grid dd small {
+    display: block;
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-3);
+    margin-top: 2px;
+  }
+
+  /* ---- Secciones ---- */
+  section { margin-top: 52px; }
+  h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 20px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--line);
+  }
+  h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 23px;
+    text-transform: uppercase;
+    margin: 32px 0 8px;
+    text-wrap: balance;
+  }
+  h3:first-of-type { margin-top: 0; }
+  p { margin: 0 0 16px; max-width: 65ch; }
+  p:last-child { margin-bottom: 0; }
+  strong { font-weight: 600; }
+  em { font-style: italic; color: var(--ink-2); }
+
+  /* ---- Tablas ---- */
+  .scroll { overflow-x: auto; margin: 22px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 480px;
+  }
+  th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-align: left;
+    font-weight: 500;
+    padding: 0 14px 9px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  td {
+    padding: 13px 14px 13px 0;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tfoot td {
+    border-top: 2px solid var(--line);
+    border-bottom: none;
+    padding-top: 13px;
+    font-weight: 600;
+  }
+  .num {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .sub { color: var(--ink-3); font-size: 12.5px; display: block; margin-top: 3px; }
+
+  /* ---- Bloque destacado ---- */
+  .callout {
+    background: var(--gold-bg);
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px;
+    margin: 26px 0;
+  }
+  .callout h4 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 17px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 8px;
+  }
+  .callout p { color: var(--ink-2); max-width: none; }
+
+  .quiet {
+    background: var(--card-2);
+    border: 1px solid var(--line-soft);
+    padding: 20px 24px;
+    margin: 26px 0;
+  }
+  .quiet p { color: var(--ink-2); max-width: none; }
+  .quiet p:first-child { margin-top: 0; }
+
+  /* ---- Lista de razones ---- */
+  .reasons { list-style: none; padding: 0; margin: 22px 0; display: grid; gap: 18px; }
+  .reasons li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .reasons .mark {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    margin-top: 1px;
+  }
+  .reasons p { margin: 0; }
+  .reasons .why { color: var(--ink-2); font-size: 13.5px; margin-top: 4px; }
+
+  /* ---- Anuncios ---- */
+  .ads { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 22px 0; }
+  .ad { background: var(--card); padding: 16px 20px; }
+  .ad-top { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .ad-kind {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border: 1px solid var(--line);
+    padding: 2px 7px;
+  }
+  .ad-name { font-family: var(--display); font-size: 18px; text-transform: uppercase; }
+  .ad p { margin: 6px 0 0; color: var(--ink-2); font-size: 13.5px; max-width: none; }
+
+  /* ---- Timeline ---- */
+  .phases { display: grid; gap: 0; margin: 22px 0; }
+  .phase {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .phase:last-child { border-bottom: none; }
+  .phase-when {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--gold);
+    padding-top: 2px;
+  }
+  .phase h4 { font-family: var(--body); font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+  .phase p { margin: 0; color: var(--ink-2); font-size: 13.5px; max-width: none; }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-3);
+    font-size: 12.5px;
+  }
+
+  @media (max-width: 540px) {
+    .phase { grid-template-columns: 1fr; gap: 6px; }
+    .sum-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <header class="cover">
+    <p class="kicker">Juventus Academy Miami · Propuesta de inversión publicitaria</p>
+    <h1>Campaña de captación<br>Pre-Academy</h1>
+    <p class="standfirst">Cómo se va a invertir el presupuesto mensual de publicidad, qué se espera obtener y en qué se basa esa expectativa.</p>
+    <p class="meta">Septiembre 2026 · Meta Ads (Facebook + Instagram) · Destino: WhatsApp</p>
+  </header>
+
+  <div class="summary">
+    <h2>En resumen</h2>
+    <dl class="sum-grid">
+      <div><dt>Inversión</dt><dd>$990<small>al mes</small></dd></div>
+      <div><dt>Diario</dt><dd>$33<small>3 × $11</small></dd></div>
+      <div><dt>Esperado</dt><dd>~49<small>conversaciones/mes</small></dd></div>
+      <div><dt>Costo previsto</dt><dd>$20,45<small>por conversación</small></dd></div>
+      <div><dt>Anuncios</dt><dd>6<small>en 3 públicos</small></dd></div>
+      <div><dt>Primera lectura</dt><dd>12<small>días</small></dd></div>
+    </dl>
+  </div>
+
+  <!-- ===== OBJETIVO ===== -->
+  <section>
+    <h2>01 · El objetivo</h2>
+
+    <h3>Conversaciones de WhatsApp con padres interesados</h3>
+
+    <p>La campaña no busca seguidores, ni visitas a la web, ni "me gusta". Busca una sola cosa: que un padre o una madre del sur de Florida abra una conversación de WhatsApp preguntando por el programa Pre-Academy.</p>
+
+    <p>Esa elección tiene una razón operativa. La inscripción en una academia deportiva no es una compra por impulso — es una decisión familiar que se conversa. El canal donde esa conversación efectivamente ocurre hoy es WhatsApp, y es donde el equipo puede responder. Optimizar hacia cualquier otro indicador produciría métricas más vistosas pero menos inscripciones.</p>
+
+    <div class="callout">
+      <h4>Por qué no se optimiza a clics</h4>
+      <p>Al revisar los últimos 24 meses de la cuenta apareció un patrón claro: <strong>los anuncios con más clics fueron los que menos conversaciones generaron.</strong> El anuncio que mejor rindió en la historia de la cuenta no era el más llamativo. Por eso toda la campaña está configurada para que Meta optimice hacia conversaciones iniciadas, no hacia tráfico.</p>
+    </div>
+  </section>
+
+  <!-- ===== PRESUPUESTO ===== -->
+  <section>
+    <h2>02 · Cómo se reparte el dinero</h2>
+
+    <p>El presupuesto se divide en tres bloques iguales. Cada bloque le habla a un tipo distinto de público, pero muestra <strong>exactamente los mismos seis anuncios</strong>.</p>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Público</th>
+            <th>A quién alcanza</th>
+            <th class="num">Diario</th>
+            <th class="num">Mensual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Intereses</strong><span class="sub">~145.000 personas</span></td>
+            <td>Padres del sur de Florida con interés declarado en fútbol.</td>
+            <td class="num">$11</td>
+            <td class="num">$330</td>
+          </tr>
+          <tr>
+            <td><strong>Audiencia similar</strong><span class="sub">1% más parecido</span></td>
+            <td>Personas que se parecen a quienes ya siguen la cuenta de Instagram de la academia.</td>
+            <td class="num">$11</td>
+            <td class="num">$330</td>
+          </tr>
+          <tr>
+            <td><strong>Abierto</strong><span class="sub">~2.500.000 personas</span></td>
+            <td>Sin filtros de interés. Meta busca libremente dentro de la zona y el rango de edad.</td>
+            <td class="num">$11</td>
+            <td class="num">$330</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2">Total</td>
+            <td class="num">$33</td>
+            <td class="num">$990</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <p>Todos comparten la misma zona geográfica — <strong>condados de Miami-Dade y Broward</strong>, que cubren las cinco sedes — y el mismo rango de edad, 25 a 54 años.</p>
+
+    <div class="quiet">
+      <p><strong>Por qué tres bloques y no uno solo.</strong> Al dar a los tres el mismo presupuesto y los mismos anuncios, la única variable que cambia es el público. Si uno rinde mejor, la causa es identificable y el mes siguiente se puede mover dinero hacia él con fundamento. Un solo bloque gastaría lo mismo sin enseñar nada.</p>
+      <p>El bloque <em>Abierto</em> cumple además la función de control: si termina ganando, significa que la segmentación manual estaba estorbando más que ayudando — un hallazgo valioso que solo se obtiene si se prueba.</p>
+    </div>
+  </section>
+
+  <!-- ===== GEOGRAFÍA ===== -->
+  <section>
+    <h2>03 · Dónde se muestra</h2>
+
+    <p>Los anuncios se muestran únicamente a <strong>residentes</strong> de Miami-Dade y Broward. Se descartó deliberadamente la opción que Meta ofrece por defecto de incluir también a "personas interesadas en la ubicación", porque incorpora turistas y visitantes temporales. Para un programa con entrenamientos semanales presenciales, ese alcance adicional es gasto perdido.</p>
+
+    <p>Las cinco sedes quedan cubiertas: Downtown Miami, Doral y Mater Bay en Miami-Dade; Davie y Miramar en Broward.</p>
+  </section>
+
+  <!-- ===== CREATIVOS ===== -->
+  <section>
+    <h2>04 · Los seis anuncios</h2>
+
+    <p>Cada uno entra por un ángulo distinto, porque no todos los padres responden al mismo argumento. Los seis se muestran en los tres públicos.</p>
+
+    <div class="ads">
+      <div class="ad">
+        <div class="ad-top"><span class="ad-kind">Video</span><span class="ad-name">El coach</span></div>
+        <p>Un entrenador explicando cómo se trabaja con niños pequeños. <strong>Es el anuncio con mejor rendimiento en la historia de la cuenta</strong> — $13,56 por conversación.</p>
+      </div>
+      <div class="ad">
+        <div class="ad-top"><span class="ad-kind">Video</span><span class="ad-name">Dolor y solución</span></div>
+        <p>Por qué muchos niños abandonan el fútbol, y qué se hace distinto. Voz en off en tono cercano.</p>
+      </div>
+      <div class="ad">
+        <div class="ad-top"><span class="ad-kind">Imagen</span><span class="ad-name">More soccer, more smiles</span></div>
+        <p>Oferta cálida con las cinco sedes. Niños con medallas — el ángulo del disfrute, no del rendimiento.</p>
+      </div>
+      <div class="ad">
+        <div class="ad-top"><span class="ad-kind">Imagen</span><span class="ad-name">Gracias, mamá</span></div>
+        <p>Una frase real de los jugadores el Día de la Madre. Prueba social auténtica, no un testimonio guionado.</p>
+      </div>
+      <div class="ad">
+        <div class="ad-top"><span class="ad-kind">Imagen</span><span class="ad-name">¿Todavía no sabes si le gusta?</span></div>
+        <p>Dirigido al padre que aún no se decide. Sin pruebas de selección, sin presión — el argumento más alineado con lo que preocupa a estas familias.</p>
+      </div>
+      <div class="ad">
+        <div class="ad-top"><span class="ad-kind">Imagen</span><span class="ad-name">Primer mes gratis</span></div>
+        <p>La oferta directa, válida en Miramar, Mater Bay y Downtown Miami.</p>
+      </div>
+    </div>
+
+    <div class="quiet">
+      <p><strong>Sobre el tono.</strong> La investigación previa sobre padres de fútbol juvenil en Estados Unidos mostró que su preocupación real no es que el hijo no tenga talento suficiente, sino encontrar un lugar donde lo entrenen de forma apropiada para su edad. Los seis anuncios están escritos desde ahí: ninguno promete formar estrellas ni usa urgencia artificial.</p>
+    </div>
+  </section>
+
+  <!-- ===== EXPECTATIVA ===== -->
+  <section>
+    <h2>05 · Qué se espera obtener</h2>
+
+    <p>La proyección no es una estimación optimista: sale del rendimiento real de la cuenta en los últimos 24 meses.</p>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Escenario</th>
+            <th class="num">Costo por conversación</th>
+            <th class="num">Conversaciones/mes</th>
+            <th>Base</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Optimista</strong></td>
+            <td class="num">$13,56</td>
+            <td class="num">~74</td>
+            <td>Si se replica el mejor registro histórico de la cuenta.</td>
+          </tr>
+          <tr>
+            <td><strong>Esperado</strong></td>
+            <td class="num">$20,45</td>
+            <td class="num">~49</td>
+            <td>Promedio histórico. Es la cifra sobre la que conviene planificar.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>La diferencia entre ambos escenarios — 25 conversaciones al mes — depende de cuál de los seis anuncios y cuál de los tres públicos termine dominando la entrega. Eso es precisamente lo que la estructura de la campaña está diseñada para averiguar.</p>
+
+    <div class="callout">
+      <h4>Una advertencia honesta sobre el primer mes</h4>
+      <p>Con seis anuncios repartidos en tres públicos, cada anuncio recibirá cerca de tres conversaciones al mes. <strong>Eso no alcanza para concluir cuál creativo funciona mejor.</strong> El primer mes sirve para establecer el costo real por conversación y detectar diferencias entre públicos, no para elegir ganadores entre anuncios. Cualquier conclusión antes de tiempo llevaría a apagar un anuncio bueno por mala suerte estadística.</p>
+    </div>
+  </section>
+
+  <!-- ===== CALENDARIO ===== -->
+  <section>
+    <h2>06 · Calendario de revisión</h2>
+
+    <p>La campaña no se toca por impulso. Cada revisión tiene un momento y un criterio definido de antemano.</p>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-when">Día 1</div>
+        <div>
+          <h4>Verificación de aprobación</h4>
+          <p>Que los anuncios estén activos y sin rechazos. No se evalúa rendimiento.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-when">Día 3</div>
+        <div>
+          <h4>Ajuste técnico de audiencia</h4>
+          <p>La audiencia similar tarda hasta 72 horas en construirse. Si queda demasiado pequeña para gastar su presupuesto, se amplía.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-when">Días 4–11</div>
+        <div>
+          <h4>Acumulación</h4>
+          <p>Se registran métricas a diario sin intervenir. Modificar una campaña durante este período reinicia el aprendizaje del algoritmo y encarece los resultados.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-when">Día 12</div>
+        <div>
+          <h4>Primera decisión</h4>
+          <p>Con unas 20 conversaciones acumuladas ya hay base para comparar los tres públicos y redistribuir presupuesto entre ellos.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-when">Día 30</div>
+        <div>
+          <h4>Evaluación de mes</h4>
+          <p>Costo real por conversación frente a la proyección, y decisión sobre la inversión del mes siguiente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DECISIONES ===== -->
+  <section>
+    <h2>07 · Dos decisiones que conviene explicar</h2>
+
+    <ul class="reasons">
+      <li>
+        <span class="mark">1</span>
+        <div>
+          <p><strong>Todo el presupuesto va a captación de público nuevo.</strong></p>
+          <p class="why">La práctica habitual es reservar un 20-30% para volver a impactar a quienes ya mostraron interés. Con $990 mensuales, ese porcentaje equivaldría a unos $300 — menos de media conversación al día, volumen insuficiente para que el algoritmo aprenda. Se activará cuando el presupuesto permita asignarle entre $400 y $500 sin debilitar la captación.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mark">2</span>
+        <div>
+          <p><strong>Se rechazaron varias "mejoras automáticas" que ofrece Meta.</strong></p>
+          <p class="why">La plataforma propone recortar las imágenes, añadirles música, generar texto alternativo y traducir los anuncios automáticamente. Todas se desactivaron: las piezas están producidas con la identidad gráfica oficial de Juventus Academy, y permitir que se alteren destruiría ese trabajo además de impedir comparar los creativos entre sí.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===== SIGUIENTE NIVEL ===== -->
+  <section>
+    <h2>08 · Cómo mejorar el rendimiento</h2>
+
+    <p>La campaña arranca con lo que hoy está disponible. Hay tres desarrollos que elevarían de forma significativa lo que este mismo presupuesto puede lograr.</p>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-when">Medición</div>
+        <div>
+          <h4>Registrar qué conversaciones terminan en inscripción</h4>
+          <p>Hoy la campaña puede reportar el costo por conversación, pero no cuántas de esas conversaciones se convierten en un alumno inscrito. Con ese dato, la optimización deja de perseguir conversaciones baratas y pasa a perseguir clientes reales — que no siempre son las mismas personas.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-when">Técnico</div>
+        <div>
+          <h4>Instalar píxel y página de destino</h4>
+          <p>Permitiría construir audiencias a partir de quienes efectivamente se inscribieron, en lugar de quienes simplemente siguen la cuenta. Es la mejora de mayor impacto sobre la calidad del público.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-when">Eficiencia</div>
+        <div>
+          <h4>Cargar la lista de familias ya inscritas</h4>
+          <p>Permitiría excluirlas de la campaña. Hoy una parte del presupuesto se invierte en mostrar anuncios de inscripción a familias que ya forman parte de la academia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Campaña montada el 21 de septiembre de 2026 · Juventus Academy Miami<br>
+    Cifras de referencia obtenidas del historial de la cuenta publicitaria de los últimos 24 meses.
+  </footer>
+
+</div>
+</body>
+</html>
